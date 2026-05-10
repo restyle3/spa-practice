@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  background: #f7f8fb;
+  font-family: Arial, sans-serif;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 48px;
+}
+
+.filters-toolbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 32px 0 24px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-input,
+.filter-select {
+  height: 44px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.filter-select {
+  min-width: 150px;
+}
+
+.search-input:focus,
+.filter-select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
