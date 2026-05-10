@@ -16,22 +16,34 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
   const [sortBy, setSortBy] = useState("none");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     async function loadData() {
-      const customers = await fetchCustomers();
-      const payments = await fetchPayments();
-      const refunds = await fetchRefunds();
+      try {
+        const customers = await fetchCustomers();
+        const payments = await fetchPayments();
+        const refunds = await fetchRefunds();
 
-      const summaryData = buildSummaryCard(payments, refunds);
-      const customerData = buildCustomerTable(customers, payments, refunds);
+        const summaryData = buildSummaryCard(payments, refunds);
+        const customerData = buildCustomerTable(customers, payments, refunds);
 
-      setSummary(summaryData);
-      setCustomer(customerData);
+        setSummary(summaryData);
+        setCustomer(customerData);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load data");
+      } finally {
+        setLoading(false);
+      }
     }
 
     loadData();
   }, []);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
 
   const filteredCustomers = customer.filter((customerRow) => {
     const matchesSearch = customerRow.customerName.toLowerCase().includes(searchTerm.toLowerCase());
