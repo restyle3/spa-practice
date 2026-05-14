@@ -3,6 +3,7 @@
   background: white;
   border-right: 1px solid #e5e7eb;
   padding: 32px 24px;
+  min-height: 100vh;
 }
 
 .sidebar-logo {

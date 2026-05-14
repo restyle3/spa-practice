@@ -5,7 +5,7 @@ export function buildCustomerTable(customers, payments, refunds) {
       .filter((payment) => payment.customerId === customer.id)
       .reduce((acc, payment) => acc + payment.amount, 0);
     const failedPayments = customerPayments.filter(
-      (payment) => payment.customerId === customer.id && payment.status === "failed",
+      (payment) => payment.customerId === "failed",
     ).length;
     const lastPayment = [...customerPayments].sort(
       (currentPayment, nextPayment) => new Date(nextPayment.createdAt) - new Date(currentPayment.createdAt),
@@ -28,3 +28,4 @@ export function buildCustomerTable(customers, payments, refunds) {
     };
   });
 }
+

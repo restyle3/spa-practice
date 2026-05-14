@@ -16,7 +16,7 @@ function CustomerTable({ customerRows }) {
 
         <tbody>
           {customerRows.map((customerRow) => (
-            <tr key={customerRow.customerName}>
+            <tr key={customerRow.id}>
               <td>{customerRow.customerName}</td>
               <td>£{customerRow.totalPaidAmount}</td>
               <td>{customerRow.failedPayments}</td>
